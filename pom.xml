@@ -1,0 +1,149 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Project information -->
+	<name>Q0rDev</name>
+	<groupId>ca.q0r</groupId>
+	<artifactId>q0rdev-parent</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<url>https://github.com/Q0rDev/q0rdev-parent</url>
+	<description>Parent Maven project pom for the Q0rDev platform.</description>
+
+    <!-- Parent information -->
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+    <!-- Build properties -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.root>.</project.root>
+        <commit>0git</commit>
+    </properties>
+
+    <!-- License information -->
+    <licenses>
+        <license>
+            <name>Q0rDev License Version 1</name>
+            <url>http://q0r.ca/license/v1.txt</url>
+            <distribution>repo</distribution>
+            <comments>GNU Lesser General Public License Version 3, but with a provision that files are released under the MIT license 180 days after they are published.</comments>
+        </license>
+    </licenses>
+
+    <!-- Organization information -->
+    <organization>
+        <name>Q0rDev</name>
+        <url>http://www.q0r.ca</url>
+    </organization>
+
+    <!-- Project developers -->
+    <developers>
+        <developer>
+            <id>MiracleM4n</id>
+            <name>Scott Chi</name>
+            <email>miraclem4n@gmail.com</email>
+        </developer>
+    </developers>
+
+    <!-- Source code access -->
+    <scm>
+        <connection>scm:git:git://github.com/Q0rDev/MChat.git</connection>
+        <developerConnection>scm:git:git@github.com:Q0rDev/MChat.git</developerConnection>
+        <url>https://github.com/Q0rDev/MChat</url>
+    </scm>
+
+    <!-- Continuous integration -->
+    <ciManagement>
+        <system>travis</system>
+        <url>https://travis-ci.org/Q0rDev/q0rdev-parent</url>
+    </ciManagement>
+
+	<!-- Dependency repositories -->
+	<repositories>
+		<repository>
+			<id>sonatype-nexus-releases</id>
+			<url>https://oss.sonatype.org/content/repositories/releases</url>
+		</repository>
+		<repository>
+			<id>sonatype-nexus-snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+        <repository>
+            <id>bukkit-repo</id>
+            <url>http://repo.bukkit.org/content/groups/public</url>
+            <releases>
+                <updatePolicy>always</updatePolicy>
+            </releases>
+            <snapshots>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>q0r-repo</id>
+            <url>http://nexus.q0r.ca/content/groups/public</url>
+            <releases>
+                <updatePolicy>always</updatePolicy>
+            </releases>
+            <snapshots>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+	</repositories>
+
+	<!-- Build configuration -->
+    <build>
+        <defaultGoal>clean install</defaultGoal>
+
+        <!-- Resources to include -->
+        <resources>
+            <!-- Static resources -->
+            <resource>
+                <filtering>false</filtering>
+                <directory>${project.root}</directory>
+                <targetPath>.</targetPath>
+                <includes>
+                    <include>LICENSE.txt</include>
+                </includes>
+            </resource>
+            <!-- Dynamic resources -->
+            <resource>
+                <targetPath>${project.root}</targetPath>
+                <filtering>true</filtering>
+                <directory>${basedir}/src/main/resources/</directory>
+                <includes>
+                    <include>*.yml</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <!-- Build plugins -->
+        <plugins>
+            <!-- Source compiler plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+            <!-- JAR creation plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
