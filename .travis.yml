@@ -1,0 +1,25 @@
+# Source language and JDK version to use.
+language: java
+jdk: oraclejdk7
+
+# Get files for use with build, namely the custom Maven settings.xml.
+before_install:
+  - "git clone https://github.com/Q0rDev/travis-ci-resources.git target/travis"
+  - "chmod +x target/travis/build.sh"
+
+# Compile and package JAR and set build properties.
+install: ./target/travis/build.sh
+script: true
+
+notifications:
+  # Disable build status email notifications, until the issue with forks is fixed.
+  email: false
+  webhooks:
+    # Send build information and status to Notifico.
+    - http://n.tkte.ch/h/2360/NA0u4hGwKnMjs7kulJCXhntz
+
+env:
+  global:
+    # Nexus Deployment
+    - secure: "0ZsV0QcoR9B25vPjczTu5aU+hUZIaq++iD+wxHgxV+1VXaLhx8zGQ2o8194giLQxZiOK6+Jgjf2l0/TDaNHHqKzYpqSscJgvyzSGTAM5AGhbr4uVJj4DSAGDDZjy3nq9yrnIyfE20dNvoUoKHi1c8dzKmlckkbeasIXQYRmfwPY="
+    - secure: "2HvPqK0UFR2W0m0r6EeEX79Fzg/i4Z5v4gUxwuHKH/LaEJRqwk8C+zEB24cbatr8H0WDz/1XXBHSR9De2fuMM86BR8kNIeG+x7ow4g5bM/cn4cpYrmsWeY0E5IXVi4tRDPfsSutMA+nNgBp0foZTV0dO+EiEZ0hOkW1bfBnjvAo="
