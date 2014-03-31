@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-	<!-- Project information -->
-	<name>Q0rDev</name>
-	<groupId>ca.q0r</groupId>
-	<artifactId>q0rdev-parent</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	<url>https://github.com/Q0rDev/q0rdev-parent</url>
-	<description>Parent Maven project pom for the Q0rDev platform.</description>
+    <!-- Project information -->
+    <name>Q0rDev</name>
+    <groupId>ca.q0r</groupId>
+    <artifactId>q0rdev-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <url>https://github.com/Q0rDev/q0rdev-parent</url>
+    <description>Parent Maven project pom for the Q0rDev platform.</description>
 
     <!-- Parent information -->
     <parent>
@@ -62,20 +62,20 @@
         <url>https://travis-ci.org/Q0rDev/${project.name}</url>
     </ciManagement>
 
-	<!-- Dependency repositories -->
-	<repositories>
-		<repository>
-			<id>sonatype-nexus-releases</id>
-			<url>https://oss.sonatype.org/content/repositories/releases</url>
-		</repository>
-		<repository>
-			<id>sonatype-nexus-snapshots</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
+    <!-- Dependency repositories -->
+    <repositories>
+        <repository>
+            <id>sonatype-nexus-releases</id>
+            <url>https://oss.sonatype.org/content/repositories/releases</url>
+        </repository>
+        <repository>
+            <id>sonatype-nexus-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
         <repository>
             <id>bukkit-repo</id>
             <url>http://repo.bukkit.org/content/groups/public</url>
@@ -96,7 +96,17 @@
                 <updatePolicy>always</updatePolicy>
             </snapshots>
         </repository>
-	</repositories>
+        <!--repository>
+            <id>vault-repo</id>
+            <url>http://ci.herocraftonline.com/plugin/repository/everything</url>
+            <releases>
+                <updatePolicy>always</updatePolicy>
+            </releases>
+            <snapshots>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository-->
+    </repositories>
 
 	<!-- Build configuration -->
     <build>
@@ -108,16 +118,16 @@
             <resource>
                 <filtering>false</filtering>
                 <directory>${project.root}</directory>
-                <targetPath>.</targetPath>
+                <targetPath>..</targetPath>
                 <includes>
                     <include>LICENSE.txt</include>
                 </includes>
             </resource>
             <!-- Dynamic resources -->
             <resource>
-                <targetPath>${project.root}</targetPath>
                 <filtering>true</filtering>
-                <directory>${basedir}/src/main/resources/</directory>
+                <directory>src/main/resources/</directory>
+                <targetPath>..</targetPath>
                 <includes>
                     <include>*.yml</include>
                 </includes>
