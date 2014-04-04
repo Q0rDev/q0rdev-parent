@@ -2,12 +2,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- Project information -->
-    <name>Q0rDev</name>
+    <name>q0rdev-parent</name>
     <groupId>ca.q0r</groupId>
     <artifactId>q0rdev-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <url>https://github.com/Q0rDev/q0rdev-parent</url>
+    <url>https://github.com/Q0rDev/${project.name}</url>
     <description>Parent Maven project pom for the Q0rDev platform.</description>
 
     <!-- Parent information -->
@@ -20,7 +20,6 @@
     <!-- Build properties -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.root>.</project.root>
         <commit>0git</commit>
     </properties>
 
@@ -117,8 +116,8 @@
             <!-- Static resources -->
             <resource>
                 <filtering>false</filtering>
-                <directory>${project.root}</directory>
-                <targetPath>..</targetPath>
+                <directory>${project.build.directory}/shared-resources/</directory>
+                <targetPath>.</targetPath>
                 <includes>
                     <include>LICENSE.txt</include>
                 </includes>
@@ -126,8 +125,8 @@
             <!-- Dynamic resources -->
             <resource>
                 <filtering>true</filtering>
-                <directory>src/main/resources/</directory>
-                <targetPath>..</targetPath>
+                <directory>${project.basedir}/src/main/resources/</directory>
+                <targetPath>.</targetPath>
                 <includes>
                     <include>*.yml</include>
                 </includes>
@@ -148,6 +147,27 @@
                     <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
+            <!-- Remote resource plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-remote-resources-plugin</artifactId>
+                <version>1.5</version>
+                <configuration>
+                    <resourceBundles>
+                        <resourceBundle>ca.q0r:q0rdev-license:1.0.0-SNAPSHOT</resourceBundle>
+                    </resourceBundles>
+                    <appendedResourcesDirectory>${project.build.directory}/shared-resources/</appendedResourcesDirectory>
+                    <attached>false</attached>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                    </execution>
+                </executions>
+            </plugin>
             <!-- JAR creation plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -156,4 +176,13 @@
             </plugin>
         </plugins>
     </build>
+
+    <!-- Dependencies -->
+    <dependencies>
+        <dependency>
+            <groupId>ca.q0r</groupId>
+            <artifactId>q0rdev-license</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>
