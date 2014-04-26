@@ -117,7 +117,7 @@
             <!-- Static resources -->
             <resource>
                 <filtering>false</filtering>
-                <directory>${project.build.directory}/shared-resources/</directory>
+                <directory>${project.build.directory}/maven-shared-archive-resources/</directory>
                 <targetPath>.</targetPath>
                 <includes>
                     <include>LICENSE.txt</include>
@@ -157,7 +157,6 @@
                     <resourceBundles>
                         <resourceBundle>ca.q0r:q0rdev-license:1.0.0-SNAPSHOT</resourceBundle>
                     </resourceBundles>
-                    <appendedResourcesDirectory>${project.build.directory}/shared-resources/</appendedResourcesDirectory>
                     <attached>false</attached>
                 </configuration>
                 <executions>
