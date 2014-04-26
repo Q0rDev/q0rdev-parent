@@ -8,6 +8,7 @@ before_install:
   - "chmod +x target/travis/build.sh"
 
 # Compile and package JAR and set build properties.
+install: true
 script: ./target/travis/build.sh
 
 notifications:
