@@ -106,11 +106,6 @@
                 <updatePolicy>always</updatePolicy>
             </snapshots>
         </repository>
-        <repository>
-            <id>vi-repo</id>
-            <name>Visual Illusions Repository</name>
-            <url>http://repo.visualillusionsent.net/repository/public/</url>
-        </repository>
     </repositories>
 
     <!-- Build configuration -->
