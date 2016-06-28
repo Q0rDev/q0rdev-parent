@@ -6,7 +6,7 @@
     <name>q0rdev-parent</name>
     <groupId>ca.q0r</groupId>
     <artifactId>q0rdev-parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <url>https://github.com/Q0rDev/${project.name}</url>
     <description>Parent Maven project pom for the Q0rDev platform.</description>
@@ -107,9 +107,9 @@
             </snapshots>
         </repository>
         <repository>
-            <id>mcstats.releases</id>
-            <name>mcstats.org releases</name>
-            <url>http://repo.mcstats.org/content/repositories/releases/</url>
+            <id>mcstats.snapshots</id>
+            <name>mcstats.org snapshots</name>
+            <url>http://repo.mcstats.org/content/repositories/snapshots/</url>
         </repository>
     </repositories>
 
